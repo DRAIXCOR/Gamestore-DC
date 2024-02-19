@@ -12,7 +12,8 @@ class PlataformaController extends Controller
      */
     public function index()
     {
-        //
+        $plataformas = Plataforma::all();
+        return view('Plataformas.indexPlataforma', compact('plataformas'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PlataformaController extends Controller
      */
     public function create()
     {
-        //
+        return view('Plataformas.createPlataforma');
     }
 
     /**
@@ -28,7 +29,19 @@ class PlataformaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre_plataforma' => ['required', 'string', 'max:255'],
+            'tipo_plataforma' => ['required', 'string', 'max:255'],
+
+
+        ]);
+        $plataforma = new Plataforma();
+        $plataforma -> nombre_plataforma = $request->nombre_plataforma;
+        $plataforma -> tipo_plataforma = $request->tipo_plataforma;
+        $plataforma->save();
+
+
+        return redirect()->route('plataforma.index');
     }
 
     /**
@@ -36,7 +49,7 @@ class PlataformaController extends Controller
      */
     public function show(Plataforma $plataforma)
     {
-        //
+        return view('plataformas.showPlataforma', compact('plataforma'));
     }
 
     /**
@@ -44,7 +57,7 @@ class PlataformaController extends Controller
      */
     public function edit(Plataforma $plataforma)
     {
-        //
+        return view('Plataformas.editPlataforma', compact('plataforma'));
     }
 
     /**
@@ -52,14 +65,29 @@ class PlataformaController extends Controller
      */
     public function update(Request $request, Plataforma $plataforma)
     {
-        //
+
+        $request->validate([
+            'nombre_plataforma' => ['required', 'string', 'max:255'],
+            'tipo_plataforma' => ['required', 'string', 'max:255'],
+
+
+        ]);
+
+        $plataforma->nombre_plataforma = $request->nombre_plataforma;
+        $plataforma->tipo_plataforma = $request->tipo_plataforma;
+        $plataforma->save();
+
+        return redirect()->route('plataforma.show', $plataforma);
     }
+    
+   
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Plataforma $plataforma)
     {
-        //
+        $plataforma->delete();
+        return redirect()->route('plataforma.index');
     }
 }

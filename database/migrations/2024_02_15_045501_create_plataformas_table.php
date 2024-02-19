@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('plataformas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre_plataforma');
+            $table->string('tipo_plataforma');
             $table->timestamps();
         });
     }

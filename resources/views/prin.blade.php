@@ -12,7 +12,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <!-- Brand -->
-            <a class="navbar-brand" href="/info">GAMESTORE DC</a>
+            <a class="navbar-brand" href="/principal">GAMESTORE DC</a>
 
             <!-- Botón para dispositivos pequeños -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="plataforma">Plataforma</a>
+                        <a class="nav-link" href="plataforma/create">Plataforma</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="juego">Juego</a>
+                        <a class="nav-link" href="juego/create">Juego</a>
                     </li>
                 </ul>
             </div>
