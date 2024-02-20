@@ -38,16 +38,17 @@
         <br><br>
 
         <label>Plataformas:</label><br>
-        <input type="checkbox" id="ps4" name="plataforma" value="ps4" {{ old('plataforma', $juego->plataforma) == 'ps4' ? 'checked' : '' }}>
+        <input type="checkbox" id="ps4" name="plataforma[]" value="ps4" {{ in_array('ps4', old('plataforma', explode(', ', $juego->plataforma))) ? 'checked' : '' }}>
         <label for="ps4"> PlayStation 4</label><br>
 
-        <input type="checkbox" id="xbox" name="plataforma" value="xbox" {{ old('plataforma', $juego->plataforma) == 'xbox' ? 'checked' : '' }}>
+        <input type="checkbox" id="xbox" name="plataforma[]" value="xbox" {{ in_array('xbox', old('plataforma', explode(', ', $juego->plataforma))) ? 'checked' : '' }}>
         <label for="xbox"> Xbox</label><br>
 
-        <input type="checkbox" id="switch" name="plataforma" value="switch" {{ old('plataforma', $juego->plataforma) == 'switch' ? 'checked' : '' }}>
+
+        <input type="checkbox" id="switch" name="plataforma[]" value="switch" {{ in_array('switch', old('plataforma', explode(', ', $juego->plataforma))) ? 'checked' : '' }}>
         <label for="switch"> Nintendo Switch</label><br>
 
-        <input type="checkbox" id="pc" name="plataforma" value="pc" {{ old('plataforma', $juego->plataforma) == 'pc' ? 'checked' : '' }}>
+        <input type="checkbox" id="pc" name="plataforma[]" value="pc" {{ in_array('pc', old('plataforma', explode(', ', $juego->plataforma))) ? 'checked' : '' }}>
         <label for="pc"> PC</label>
         <br><br>
 

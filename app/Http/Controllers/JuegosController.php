@@ -93,7 +93,7 @@ class JuegosController extends Controller
         $juego->nombre_juego = $request->nombre_juego;
         $juego->genero = $request->genero;
         $juego->edad = $request->edad;
-        $juego->plataforma= $plataformas;
+        $juego->plataforma = implode(', ', $request->input('plataforma'));
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year= $request->release_year;
