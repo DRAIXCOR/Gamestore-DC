@@ -41,15 +41,15 @@ class JuegosController extends Controller
 
         ]);
         
-        $juegos = new Juegos();
-        $juegos->nombre_juego = $request->nombre_juego;
-        $juegos->genero = $request->genero;
-        $juegos->edad = $request->edad;
-        $juegos->plataforma = $request->plataforma;
-        $juegos->precio = $request->precio;
-        $juegos->desarrolladora = $request->desarrolladora;
-        $juegos->release_year = $request->release_year;
-        $juegos->save();
+        $juego = new Juegos();
+        $juego->nombre_juego = $request->nombre_juego;
+        $juego->genero = $request->genero;
+        $juego->edad = $request->edad;
+        $juego->plataforma = implode(', ', $request->input('plataforma'));
+        $juego->precio = $request->precio;
+        $juego->desarrolladora = $request->desarrolladora;
+        $juego->release_year = $request->release_year;
+        $juego->save();
 
         return redirect()->route('juego.index');
     }
@@ -88,11 +88,12 @@ class JuegosController extends Controller
 
         ]);
         
-        
+        $plataformas = implode(', ', $request->input('plataforma'));
+
         $juego->nombre_juego = $request->nombre_juego;
         $juego->genero = $request->genero;
         $juego->edad = $request->edad;
-        $juego->plataforma= $request->plataforma;
+        $juego->plataforma= $plataformas;
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year= $request->release_year;
