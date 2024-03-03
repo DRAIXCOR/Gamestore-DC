@@ -26,3 +26,5 @@ Route::get('/principal/{Tipo?}', [PrincipalController::class, 'prin']);
 Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
+
+Route::resource('lista', JuegosController::class);
