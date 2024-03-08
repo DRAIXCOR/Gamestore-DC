@@ -34,25 +34,18 @@
 <br><br>
 
 <label for="edad">Edad Recomendada:</label>
-<input type="number" name="edad" step="1" style="width: 40px;" value="{{ old('edad') }}">
+<input type="number" name="edad" step="1" style="width: 40px;" value="{{ old('edad', 6) }}">
 <br><br>
 
 <label>Plataformas:</label><br>
-<input type="checkbox" id="ps4" name="plataforma[]" value="ps4" {{ in_array('ps4', old('plataforma', [])) ? 'checked' : '' }}>
-<label for="ps4"> PlayStation 4</label><br>
-
-<input type="checkbox" id="xbox" name="plataforma[]" value="xbox" {{ in_array('xbox', old('plataforma', [])) ? 'checked' : '' }}>
-<label for="xbox"> Xbox</label><br>
-
-<input type="checkbox" id="switch" name="plataforma[]" value="switch" {{ in_array('switch', old('plataforma', [])) ? 'checked' : '' }}>
-<label for="switch"> Nintendo Switch</label><br>
-
-<input type="checkbox" id="pc" name="plataforma[]" value="pc" {{ in_array('pc', old('plataforma', [])) ? 'checked' : '' }}>
-<label for="pc"> PC</label>
-<br><br>
+@foreach($plataformas as $plataforma)
+    <input type="checkbox" id="{{ $plataforma->nombre_plataforma }}" name="plataforma[]" value="{{ $plataforma->nombre_plataforma }}" {{ in_array($plataforma->nombre_plataforma, old('plataforma', [])) ? 'checked' : '' }}>
+    <label for="{{ $plataforma->nombre_plataforma }}">{{ $plataforma->nombre_plataforma }}</label><br>
+@endforeach
+<br>
 
 <label for="precio">Precio en pesos (MXN):</label>
-<input type="number" name="precio" step="1" style="width: 55px;" value="{{ old('precio') }}">
+<input type="number" name="precio" step="10" style="width: 55px;" value="{{ old('precio', 999) }}">
 <br><br>
 
 <label for="desarrolladora">Desarrolladora del Videojuego:</label>

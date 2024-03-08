@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Juegos;
+use App\Models\Plataforma;
 use Illuminate\Http\Request;
 
 class JuegosController extends Controller
@@ -21,7 +22,8 @@ class JuegosController extends Controller
      */
     public function create()
     {
-        return view('Juegos.createJuegos');
+        $plataformas = Plataforma::all();
+        return view('Juegos.createJuegos', ['plataformas' => $plataformas]);
     }
 
     /**
