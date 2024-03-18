@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('listas', function (Blueprint $table) {
             $table->id();
-            $table->string('name')
+            $table->string('name');
             $table->string('nombre_juego');
             $table->string('precio');
             $table->string('oferta');
