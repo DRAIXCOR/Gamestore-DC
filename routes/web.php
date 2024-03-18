@@ -27,4 +27,4 @@ Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
 
-Route::resource('lista', JuegosController::class);
+Route::resource('lista', ListasController::class);
