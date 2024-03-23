@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/plataforma">ver listado</a>
+                            <a class="nav-link" href="/lista">ver listado</a>
                         </li>
                         
                     </ul>
@@ -60,8 +60,7 @@
             </div>
     </nav>
 
-    <a href="/principal">Regresar a pagina principal</a> |
-    <a href="/lista">ver listado</a> 
+   
     <h1>Formulario de Lista</h1>
 
     <hr>

@@ -4,11 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+
+        .bg-custom {
+            background-color: #CCCCCC; /* Color gris */
+        }
+    </style>
+</head>
+<body class="bg-custom">
     <title>Formulario Juegos</title>
 </head>
 <body>
-    <a href="/principal">Regresar a pagina principal</a> |
-    <a href="/juego">ver listado</a> 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Cambiar la clase 'navbar-light' a 'navbar-dark' y 'bg-light' a 'bg-dark' -->
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="/principal">GAMESTORE DC</a>
+
+            <!-- Botón para dispositivos pequeños -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menú de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/juego">ver listado</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <h1>Formulario de Videojuegos</h1>
 
     <hr>
@@ -59,5 +87,12 @@
 
         <input type="submit" value="Enviar">
     </form>
+        <!-- Footer -->
+        <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; GAMESTORE DC</p>
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

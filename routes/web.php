@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JuegosController;
+use App\Http\Controllers\ListasController;
 use App\Http\Controllers\PlataformaController;
 use App\Http\Controllers\PrincipalController;
 use App\Models\Plataforma;
@@ -23,8 +24,25 @@ Route::get('/', function () {
 
 Route::get('/principal/{Tipo?}', [PrincipalController::class, 'prin']); 
 
+Route::resource('lista', ListasController::class)->parameters([
+    'lista' => 'lista'
+]);
+
+
+
+
 Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+   
 
-Route::resource('lista', ListasController::class);
+
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

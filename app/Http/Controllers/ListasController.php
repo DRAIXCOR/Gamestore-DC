@@ -13,7 +13,7 @@ class ListasController extends Controller
     public function index()
     {
         $listas = Listas::all();
-        return view('Listas.indexlista', compact('listas'));
+        return view('listas.indexLista', compact('listas'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ListasController extends Controller
      */
     public function create()
     {
-        return view('Listas.createListas');
+        return view('listas.createListas');
     }
 
     /**
@@ -33,10 +33,7 @@ class ListasController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'nombre_juego' => ['required', 'string', 'max:255'],
             'precio' => 'required',
-            'oferta' => 'required|array|min:1',
-            'disponible' => 'required|array|min:1',
-
-
+           
         ]);
         
         $listas = new Listas();
@@ -47,7 +44,7 @@ class ListasController extends Controller
         $listas->disponible = $request->disponible;
         $listas->save();
 
-        return redirect()->route('Listas.index');
+        return redirect()->route('lista.index');
     }
 
     /**
@@ -55,13 +52,13 @@ class ListasController extends Controller
      */
     public function show(Listas $listas)
     {
-        return view('Listas.showListas', compact('lista'));
+        return view('Listas.showListas', compact('listas'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Listas $listas)
+    public function edit(Listas $lista)
     {
         return view('Listas.editListas', compact('lista'));
     }
@@ -75,13 +72,9 @@ class ListasController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'nombre_juego' => ['required', 'string', 'max:255'],
             'precio' => 'required',
-            'oferta' => 'required|array|min:1',
-            'disponible' => 'required|array|min:1',
-
-
+          
         ]);
         
-        $listas = new Listas();
         $listas->name = $request->name;
         $listas->nombre_juego = $request->nombre_juego;
         $listas->precio = $request->precio;
@@ -89,7 +82,7 @@ class ListasController extends Controller
         $listas->disponible = $request->disponible;
         $listas->save();
 
-        return redirect()->route('listas.show', $juego);
+        return redirect()->route('listas.show', $listas);
     }
 
     /**

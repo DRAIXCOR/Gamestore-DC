@@ -69,9 +69,10 @@ class JuegosController extends Controller
      */
     public function edit(Juegos $juego)
     {
-        
-        return view('Juegos.editJuegos', compact('juego'));
+        $plataformas = Plataforma::all();
+        return view('Juegos.editJuegos', compact('juego', 'plataformas'));
     }
+    
 
     /**
      * Update the specified resource in storage.

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nombre_juego');
             $table->string('precio');
             $table->string('oferta');
-            $table->string('disponible')
+            $table->string('disponible');
             $table->timestamps();
         });
     }
