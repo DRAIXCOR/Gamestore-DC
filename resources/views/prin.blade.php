@@ -54,7 +54,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="lista/create">lista</a>
+                        <a class="nav-link" href="lista/create">Lista de deseos</a>
                     </li>
                 </ul>
             </div>
