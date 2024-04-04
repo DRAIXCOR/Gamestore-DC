@@ -1,0 +1,129 @@
+[33mcommit 176e8efd88ac8b1b6cc42a04098da182a111cc7e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;32mlista_deseos[m[33m)[m
+Author: Orlando-Javier-Loredo-Padilla <9697javier@gmail.com>
+Date:   Wed Apr 3 14:31:53 2024 -0600
+
+    Correcion de errores en listas
+
+[33mcommit afecc3f1a5023c18ef7f1836c57df65b9ce1c17e[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/Listas_de_deseos[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: DRAIXCOR <123282785+DRAIXCOR@users.noreply.github.com>
+Date:   Fri Mar 22 22:09:28 2024 -0600
+
+    Create README2.md
+
+[33mcommit 5fc5d87adac4a6f66dc4b76507ae89c7f78298bf[m
+Author: Draixcor <sonicbelmont847@gmail.com>
+Date:   Fri Mar 22 22:01:51 2024 -0600
+
+    Proyecto 2
+
+[33mcommit 9be85b3c8dd55c2237834d8ff13ae75172149ec1[m[33m ([m[1;31morigin/Diseño[m[33m)[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Thu Mar 21 19:25:41 2024 -0600
+
+    Se agregaron elementos de css a los views de las listas
+
+[33mcommit 316d551817fcf9f5d4af9c3369c46a8e52815b2e[m
+Merge: 761359a a6aa61f
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Wed Mar 20 20:29:15 2024 -0600
+
+    Modificación de archivos de la rama de listas /listas
+
+[33mcommit a6aa61f8e1abd6667de43882c5490494ceb8d00a[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Wed Mar 20 20:27:40 2024 -0600
+
+    Validación de errores en editListas
+
+[33mcommit e4475bf20e9c6fa64d9d16dfa94a079da675ed93[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Wed Mar 20 20:24:24 2024 -0600
+
+    Agregar verificación de errores en createListas
+
+[33mcommit 816cde32f8ce1b2f1ad7d7f44afecfbd8e4546e3[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Mon Mar 18 15:20:08 2024 -0600
+
+    Update web.php
+
+[33mcommit 761359a92fcb9726a8851ab4c5445188d13ca062[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Mon Mar 18 12:42:55 2024 -0600
+
+    Update 2024_03_02_222339_create_listas_table.php
+
+[33mcommit b93382c72413de44d9d20b24db9cbe0837663be5[m
+Merge: d0187bc e659814
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 16 19:17:43 2024 -0600
+
+    Merge pull request #1 from DRAIXCOR/listas
+    
+    Listas agregadas
+
+[33mcommit e659814f90510ab605a8b2adf70aef64af2cc355[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 16 19:16:24 2024 -0600
+
+    Controlador de Login provicional
+
+[33mcommit d0187bce38b1ebc89c4d420d92449573e02b02b4[m[33m ([m[1;31morigin/checklist_funcional[m[33m)[m
+Author: Carlos Salcido <cusalcidoa@gmail.com>
+Date:   Fri Mar 8 15:40:07 2024 -0600
+
+    Se agrega el select para los tipos de plataformas y cada plataforma creada se agrega al checklist del formulario videojuegos
+
+[33mcommit 6948a2f84d6c5b3d708e05fcefa04782629d1202[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 2 19:12:24 2024 -0600
+
+    Agregar ruta en web.php
+
+[33mcommit 1416e55c1178bc908acb05fdc6d8f32f27b147d3[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 2 19:10:14 2024 -0600
+
+    Views de las listas
+
+[33mcommit d8234db926fe1f815ba1c1c8879e53cf8a5d1cef[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 2 19:08:44 2024 -0600
+
+    Add files via upload
+
+[33mcommit 8aa856ba792e41ed5ce5170b250de0228418a7f1[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 2 19:07:46 2024 -0600
+
+    Add files via upload
+
+[33mcommit 9b07d12d9fb4d247db5c6f06612a7bd4248386ae[m
+Author: Orlando Loredo <123122353+Orlando-Javier-Loredo-Padilla@users.noreply.github.com>
+Date:   Sat Mar 2 19:06:30 2024 -0600
+
+    Add files via upload
+
+[33mcommit 85671bacb977dd7378f8ef69e20abbf11ca77d2c[m
+Author: Carlos Salcido <cusalcidoa@gmail.com>
+Date:   Mon Feb 19 22:40:31 2024 -0600
+
+    correccion a editJuegos.blade.php, ahora se pueden editar los juegos sin problemas del checklist
+
+[33mcommit 67be8449d94188db630d93f0f46bd4c5701fc670[m
+Author: Carlos Salcido <cusalcidoa@gmail.com>
+Date:   Mon Feb 19 21:01:10 2024 -0600
+
+    Cambios en el controlador JuegosController.php para que acepte varios campos del checklist en la base de datos
+
+[33mcommit 8103fda44ff0a3a255abceb52437969a94874f6b[m
+Author: Draixcor <sonicbelmont847@gmail.com>
+Date:   Sun Feb 18 21:42:05 2024 -0600
+
+    metodos mostrar, editar, eliminar y validaciones de ambas tablas
+
+[33mcommit 3c3320bc8450059ba59ccd5fb8632a546948b4ac[m
+Author: Draixcor <sonicbelmont847@gmail.com>
+Date:   Wed Feb 14 23:54:04 2024 -0600
+
+    Creacion de base de datos y principal
