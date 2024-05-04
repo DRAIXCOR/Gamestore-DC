@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -11,23 +12,23 @@ class LoginController extends Controller
     
     public function register(Request $request)
     {
-        //Validar datos 
         $user = new User();
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash:make($request->password);
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
-        Auth:login($user);
+        Auth::login($user);
         
-        return redirect(route('privada'));
+        //return redirect()->back();
+
+        
     }
 
     public function login(Request $request)
     {
-        //Validar datos 
         
         $credentials = [
             "email" => $request->email,
@@ -35,27 +36,40 @@ class LoginController extends Controller
 
         ];
 
-        $remenber = ($request->has('remenber' ? true:false));
+        $remenber = ($request->has('remenber') ? true:false);
 
-        if(Auth:attempt($credentials, $remenber)){
+        if(Auth::attempt($credentials, $remenber)){
 
             $request->session()->regenerate();
 
-            return redirect()->intended('privada');
+
+            return view('/principal');
         }
         else{
             return redirect('login'); 
         }
 
-        $listas->name = $request->name;
-        $listas->email = $request->email;
-        $listas->password = Hash:make($request->password);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
 
         $user->save();
 
         Auth:login($user);
         
-        return redirect(route('privada'));
+        return view('/principal');
+    }
+
+
+    public function logout(Request $request)
+    {
+        
+       Auth::logout();
+       $request->session()->invalidate();
+       $request->session()->regenerateToken();
+
+       return redirect(route('login'));
+       return view('/principal');
     }
 
 }
