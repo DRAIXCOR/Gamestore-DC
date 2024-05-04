@@ -74,7 +74,18 @@
                         </form>
                     </li>
 
+                    <li class="nav-item">
+                            @if ($user)
+                                <a class="nav-link">{{ $user->name }}</a>
+                               
+                            @else
+                                <a class="nav-link" href="login">Invitado</a>
+                            @endif
+                    </l1>
+                
+                
                 </ul>
+
             </div>
         </div>
     </nav>
