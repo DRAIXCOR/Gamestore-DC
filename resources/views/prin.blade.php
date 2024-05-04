@@ -56,12 +56,30 @@
                     <li class="nav-item">
                         <a class="nav-link" href="lista/create">Lista de deseos</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Log In</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="register">Registrarse</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a class="nav-link" :href="route('logout')"
+                                onclick="event.preventDefault();
+                                this.closest('form').submit();"> Log Out </a>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <h2>Tablas para crear las plataformas de videojuegos y otra para los juegos</h2>
+    <!--<h2>Tablas para crear las plataformas de videojuegos y otra para los juegos</h2>-->
     
 
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
