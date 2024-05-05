@@ -13,7 +13,7 @@ class ListasController extends Controller
     public function index()
     {
         $listas = Listas::all();
-        return view('listas.indexLista', compact('listas'));
+        return view('listas.indexListas', compact('listas'));
     }
 
     /**
@@ -36,13 +36,13 @@ class ListasController extends Controller
            
         ]);
         
-        $listas = new Listas();
-        $listas->name = $request->name;
-        $listas->nombre_juego = $request->nombre_juego;
-        $listas->precio = $request->precio;
-        $listas->oferta = $request->oferta;
-        $listas->disponible = $request->disponible;
-        $listas->save();
+        $lista = new Listas();
+        $lista->name = $request->name;
+        $lista->nombre_juego = $request->nombre_juego;
+        $lista->precio = $request->precio;
+        $lista->oferta = $request->oferta;
+        $lista->disponible = $request->disponible;
+        $lista->save();
 
         return redirect()->route('lista.index');
     }
@@ -50,9 +50,9 @@ class ListasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Listas $listas)
+    public function show(Listas $lista)
     {
-        return view('Listas.showListas', compact('listas'));
+        return view('Listas.showListas', compact('lista'));
     }
 
     /**
@@ -66,7 +66,7 @@ class ListasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Listas $listas)
+    public function update(Request $request, Listas $lista)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -75,22 +75,22 @@ class ListasController extends Controller
           
         ]);
         
-        $listas->name = $request->name;
-        $listas->nombre_juego = $request->nombre_juego;
-        $listas->precio = $request->precio;
-        $listas->oferta = $request->oferta;
-        $listas->disponible = $request->disponible;
-        $listas->save();
+        $lista->name = $request->name;
+        $lista->nombre_juego = $request->nombre_juego;
+        $lista->precio = $request->precio;
+        $lista->oferta = $request->oferta;
+        $lista->disponible = $request->disponible;
+        $lista->save();
 
-        return redirect()->route('listas.show', $listas);
+        return redirect()->route('lista.show', $lista);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Listas $listas)
+    public function destroy(Listas $lista)
     {
-        $listas->delete();
-        return redirect()->route('listas.index');
+        $lista->delete();
+        return redirect()->route('lista.index');
     }
 }

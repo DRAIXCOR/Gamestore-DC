@@ -13,7 +13,7 @@ class JuegosController extends Controller
      */
     public function index()
     {
-        $juegos = Juegos::all();
+        $juegos = Juegos::with('plataforma')->get();
         return view('Juegos.indexJuegos', compact('juegos'));
     }
 
@@ -43,6 +43,7 @@ class JuegosController extends Controller
 
         ]);
         
+       
         $juego = new Juegos();
         $juego->nombre_juego = $request->nombre_juego;
         $juego->genero = $request->genero;
@@ -51,6 +52,7 @@ class JuegosController extends Controller
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year = $request->release_year;
+        $juego->plataforma_id = $request->plataforma_id;
         $juego->save();
 
         return redirect()->route('juego.index');
@@ -100,6 +102,7 @@ class JuegosController extends Controller
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year= $request->release_year;
+        $juego->plataforma_id = $request->plataforma_id;
         $juego->save();
 
         return redirect()->route('juego.show', $juego);

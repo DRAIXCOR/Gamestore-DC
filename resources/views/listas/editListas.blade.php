@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Formulario Lista</title>
+    <title>Editar lista</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
             html, body {
@@ -51,7 +51,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/plataforma">ver listado</a>
+                            <a class="nav-link" href="/lista">Lista de deseos</a>
                         </li>
                         
                     </ul>
@@ -59,9 +59,7 @@
             </div>
     </nav>
 
-    <a href="/principal">Regresar a pagina principal</a> |
-    <a href="/lista">ver listado</a> 
-    <h1>Formulario de Lista</h1>
+    <h1>Editar juego de la lista</h1>
 
     <hr>
     @include('parciales.formError')
@@ -70,14 +68,14 @@
         @method('PATCH')
 
         <label for="name">Nombre del Usuario:</label>
-        <input type="text" name="name" value=" {{ $}} ">
+        <input type="text" name="name" value=" {{$lista->name}} ">
         @error('Nombre del Usuario') 
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
         <br><br>
 
         <label for="nombre_juego">Nombre del Videojuego:</label>
-        <input type="text" name="nombre_juego" value=" {{old('nombre_juego')}} ">
+        <input type="text" name="nombre_juego" value=" {{$lista->nombre_juego}} ">
         @error('Nombre del juego') 
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
@@ -85,7 +83,7 @@
         
 
         <label for="precio">Precio en pesos (MXN):</label>
-        <input type="number" name="precio" step="1" style="width: 55px;" value="{{ old('precio') }}">
+        <input type="number" name="precio" step="1" style="width: 55px;" value="{{$lista->precio}}">
         <br><br>
         @error('Precio en pesos') 
             <div class=”alert alert-danger”> {{$message}}</div>

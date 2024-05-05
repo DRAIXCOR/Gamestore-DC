@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('juegos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_juego');
+            $table->unsignedBigInteger('plataforma_id');
+            $table->foreign('plataforma_id')->references('id')->on('plataformas')->onDelete('cascade');
             $table->string('genero');
             $table->string('edad');
             $table->string('plataforma');

@@ -76,6 +76,7 @@
                         <td>{{ $plataforma->nombre_plataforma }}</td>
                         <td>{{ $plataforma->tipo_plataforma }}</td>
                         <td>{{ $plataforma->created_at }}</td>
+
                         <td>
                             <a href="{{ route('plataforma.show', $plataforma) }}" class="btn btn-primary">Ver Plataformas</a>
                         </td>

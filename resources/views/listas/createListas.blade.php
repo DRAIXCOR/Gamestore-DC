@@ -36,12 +36,10 @@
 <body class="bg-custom">
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Cambiar la clase 'navbar-light' a 'navbar-dark' y 'bg-light' a 'bg-dark' -->
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand" href="/principal">GAMESTORE DC</a>
-
 
                 <!-- Botón para dispositivos pequeños -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,17 +49,16 @@
                 <!-- Menú de navegación -->
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/lista">ver listado</a>
-                        </li>
                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="/lista">Lista de deseos</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-    </nav>
-
+        </nav>
    
-    <h1>Formulario de Lista</h1>
+    <h1>Agregar juego a la lista de deseos</h1>
 
     <hr>
     @include('parciales.formError')
@@ -80,7 +77,6 @@
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
         <br><br>
-        
 
         <label for="precio">Precio en pesos (MXN):</label>
         <input type="number" name="precio" step="1" style="width: 55px;" value="{{ old('precio') }}">
@@ -109,7 +105,6 @@
         @error('Disponible') 
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
-        <br><br>
 
         <input type="submit" value="Enviar">
     </form>
