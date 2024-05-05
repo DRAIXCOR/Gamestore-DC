@@ -42,7 +42,11 @@ Route::resource('juego', JuegosController::class);
 
 //Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
 //Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
+<<<<<<< HEAD
 //Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+=======
+//Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+>>>>>>> 868a53bae807360812013e66d2c6244856f67db3
 
 //Route::post('/registro',[LoginController::class,'registro'])->name('registro');
 

@@ -1,60 +1,101 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registro</title>
 
-        <x-validation-errors class="mb-4" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .container-fluid {
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+            }
+            .content {
+                flex: 1 0 auto;
+            }
+            footer {
+                flex-shrink: 0;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+            .bg-custom {
+                background-color: #CCCCCC; /* Color gris */
+            }
+    </style>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+</head>
+<body class="bg-custom">
+<body>
 
-            <div>
-                <x-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- Cambiar la clase 'navbar-light' a 'navbar-dark' y 'bg-light' a 'bg-dark' -->
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="/principal">GAMESTORE DC</a>
 
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            </div>
+                <!-- Botón para dispositivos pequeños -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-label for="terms">
-                        <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
-
-                            <div class="ms-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-label>
+                <!-- Menú de navegación -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                    </ul>
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ms-4">
-                    {{ __('Register') }}
-                </x-button>
             </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+        </nav>
+   
+     <h1>Crear cuenta</h1>
+        @include('parciales.formError')
+        <form  action="{{ route('register') }}" method="post">
+            @csrf
+          
+            <div>
+                <label for="name">Nombre</label>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                @error('name')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="email">Correo Electrónico</label>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                @error('email')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" name="password" required autocomplete="new-password">
+                @error('password')
+                    <span>{{ $message }}</span>
+                @enderror
+            </div>
+            <div>
+                <label for="password_confirmation">Confirmar Contraseña</label>
+                <input id="password_confirmation" type="password" name="password_confirmation" required>
+            </div>
+            <div>
+                <button type="submit">Registrarse</button>
+            </div>
+    <form>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; GAMESTORE DC</p>
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
