@@ -56,7 +56,7 @@
             <li>nombre: {{ $juego->nombre_juego }}</li>
             <li>genero: {{ $juego->genero}}</li>
             <li>edad: {{ $juego->edad}}</li>
-            <li>plataforma: {{ $juego->plataforma}}</li>
+            <li>plataforma: {{ $juego->Plataforma->nombre_plataforma}}</li>
             <li>precio: {{ $juego->precio}}</li>
             <li>desarrolladora: {{ $juego->desarrolladora}}</li>
             <li>año: {{ $juego->release_year}}</li>

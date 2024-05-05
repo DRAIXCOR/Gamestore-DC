@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Juegos extends Model
 {
     use HasFactory;
+   
+
+    
+    public function plataforma()
+    {
+        return $this->belongsTo(Plataforma::class, 'plataforma_id');
+    }
 }

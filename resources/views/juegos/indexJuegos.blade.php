@@ -93,7 +93,7 @@
                         <td>{{ $juego->nombre_juego }}</td>
                         <td>{{ $juego->genero }}</td>
                         <td>{{ $juego->edad }}</td>
-                        <td>{{ $juego->plataforma }}</td>
+                        <td>{{ $juego->Plataforma->nombre_plataforma }}</td> 
                         <td>{{ $juego->precio }}</td>
                         <td>{{ $juego->desarrolladora }}</td>
                         <td>{{ $juego->release_year }}</td>
