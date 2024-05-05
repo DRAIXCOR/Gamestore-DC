@@ -33,20 +33,6 @@ Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
 
-//Route::resource('login', LoginController::class);
-
-
-//Route::view('/login', 'login')->name('login');
-//Route::view('/registro',"register")->name('registro');
-//Route::view('/privada',"secret")->middleware('auth')->name('privada');
-
-//Route::post('/validar-registro',[LoginController::class,'register'])->name('validar-registro');
-//Route::post('/inicia-sesion',[LoginController::class,'login'])->name('inicia-sesion');
-//Route::post('/logout',[LoginController::class,'logout'])->name('logout');
-
-//Route::post('/registro',[LoginController::class,'registro'])->name('registro');
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
