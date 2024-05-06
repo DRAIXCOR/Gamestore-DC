@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Juegos;
 use App\Models\Plataforma;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class JuegosController extends Controller
 {
@@ -39,11 +40,14 @@ class JuegosController extends Controller
             'precio' => 'required',
             'desarrolladora' => ['required', 'string', 'max:255'],
             'release_year' => 'required',
+            'imagen' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'], 
 
 
         ]);
         
-       
+        // Guardar la imagen en el almacenamiento local
+        $rutaImagen = $request->file('imagen')->store('public/images');
+
         $juego = new Juegos();
         $juego->nombre_juego = $request->nombre_juego;
         $juego->genero = $request->genero;
@@ -52,6 +56,7 @@ class JuegosController extends Controller
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year = $request->release_year;
+        $juego->imagen = Storage::url($rutaImagen); // Obtener la URL pública de la imagen
         $juego->plataforma_id = $request->plataforma_id;
         $juego->save();
 
