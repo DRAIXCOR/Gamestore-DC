@@ -45,15 +45,11 @@ class JuegosController extends Controller
 
 
         ]);
-        
-        // Guardar la imagen en el almacenamiento local
-        //$rutaImagen = $request->file('imagen')->store('public/images');
-
 
         $imagenOriginal = $request->file('imagen');
 
         // Generar un nombre de archivo único
-        $nombreArchivo = uniqid('imagen_') . '.' . $imagenOriginal->getClientOriginalExtension();
+        $nombreArchivo = pathinfo($imagenOriginal->getClientOriginalName(), PATHINFO_FILENAME) . '_' . uniqid() . '.' . $imagenOriginal->getClientOriginalExtension();
 
         // Reescalar la imagen
         $imagenReescalada = Image::make($imagenOriginal)->resize(200, null, function ($constraint) {
@@ -63,18 +59,6 @@ class JuegosController extends Controller
         //Guardado extraño pero funcional en el almacenamiento local
         $imagenReescalada->save(public_path('imagenes/' . $nombreArchivo));
         $rutaImagen = 'imagenes/' . $nombreArchivo;
-
-
-        // Guardar la imagen reescalada en el almacenamiento de la aplicación
-        //$rutaImagen = $imagenOriginal->store('imagenes');
-
-        // Guardar la imagen reescalada en el directorio 'public/images' de 'storage'
-        //$rutaImagen = $imagenReescalada->store('public/images');
-        // Obtener la URL pública de la imagen
-        //$urlImagen = Storage::url($rutaImagen);
-
-        //$imagenReescalada->save('public/uploads/' . $nombreArchivo);
-
 
         $juego = new Juegos();
         $juego->nombre_juego = $request->nombre_juego;
@@ -122,6 +106,7 @@ class JuegosController extends Controller
             'precio' => 'required',
             'desarrolladora' => ['required', 'string', 'max:255'],
             'release_year' => 'required',
+            'imagen' => ['image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
 
 
         ]);
@@ -135,6 +120,16 @@ class JuegosController extends Controller
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year= $request->release_year;
+        if ($request->hasFile('imagen')) {
+            $imagenOriginal = $request->file('imagen');
+            $nombreArchivo = pathinfo($imagenOriginal->getClientOriginalName(), PATHINFO_FILENAME) . '_' . uniqid() . '.' . $imagenOriginal->getClientOriginalExtension();
+            $imagenReescalada = Image::make($imagenOriginal)->resize(200, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $rutaImagen = 'imagenes/' . $nombreArchivo;
+            $imagenReescalada->save(public_path('imagenes/' . $nombreArchivo));
+            $juego->imagen = $rutaImagen;
+        }
         $juego->plataforma_id = $request->plataforma_id;
         $juego->save();
 

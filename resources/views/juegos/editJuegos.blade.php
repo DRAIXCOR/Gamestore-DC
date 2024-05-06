@@ -30,7 +30,7 @@
 <h1>Editar Juego</h1>
 <hr>
 @include('parciales.formError')
-<form action="/juego/{{ $juego->id }}" method="POST">
+<form action="/juego/{{ $juego->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <label for="nombre_juego">Nombre del Videojuego:</label>
@@ -63,7 +63,7 @@
     <br>
 
     <label for="precio">Precio en pesos (MXN):</label>
-    <input type="number" name="precio" step="10" style="width: 55px;" value="{{ $juego->precio }}">
+    <input type="number" name="precio" step="10" style="width: 65px;" value="{{ $juego->precio }}">
     <br><br>
 
     <label for="desarrolladora">Desarrolladora del Videojuego:</label>
@@ -71,8 +71,49 @@
     <br><br>
 
     <label for="release_year">Año de lanzamiento:</label>
-    <input type="number" name="release_year" step="1" style="width: 55px;" value="{{ $juego->release_year }}">
+    <input type="number" name="release_year" step="1" style="width: 65px;" value="{{ $juego->release_year }}">
     <br><br>
+
+    <label for="imagen">Portada:</label>
+    <input type="file" name="imagen" accept="image/*" id="imagenInput">
+     @error('file')
+        <br>
+        <small class="text-danger">{{ $message }}</small>
+     @enderror
+    <br><br>
+
+    <!-- Vista previa de la imagen redimensionada -->
+    <img id="imagenPreview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 200px; max-height: 200px;">
+    <script>
+        const imagenInput = document.getElementById('imagenInput');
+        const imagenPreview = document.getElementById('imagenPreview');
+
+        imagenInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function() {
+                    // Redimensionar la imagen a un tamaño específico (por ejemplo, 200x200 píxeles)
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 300;
+                    canvas.height = 300;
+                    ctx.drawImage(img, 0, 0, 300, 300);
+
+                    // Mostrar la vista previa de la imagen redimensionada
+                    imagenPreview.src = canvas.toDataURL();
+                    imagenPreview.style.display = 'block';
+                };
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+    <br><br>
+
 
     <!-- Campo oculto para almacenar el ID de la plataforma -->
     <input type="hidden" name="plataforma_id" id="plataforma_id" value="">

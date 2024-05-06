@@ -83,7 +83,8 @@
                     <th>Precio</th>
                     <th>Desarrolladora</th>
                     <th>Año</th>
-                    <th>fecha</th>
+                    <th>Fecha</th>
+                    <th>Portada</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -99,14 +100,17 @@
                         <td>{{ $juego->release_year }}</td>
                         <td>{{ $juego->created_at }}</td>
                         <td>
-                            <a href="{{ route('juego.show', $juego) }}" class="btn btn-primary">Ver juegos</a>
+                            <img src="{{ asset($juego->imagen) }}" alt="Portada del juego">
+                        </td>
+                        <td>
+                            <a href="{{ route('juego.show', $juego) }}" class="btn btn-primary">Ver juego</a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
+<br><br><br>
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
         <p>&copy; GAMESTORE DC</p>
