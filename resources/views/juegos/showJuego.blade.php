@@ -60,6 +60,7 @@
             <li>precio: {{ $juego->precio}}</li>
             <li>desarrolladora: {{ $juego->desarrolladora}}</li>
             <li>año: {{ $juego->release_year}}</li>
+            <li>portada: <img src="{{ asset($juego->imagen) }}" alt="Portada de {{ $juego->nombre_juego }}"></li>
            
     <li>
         <a href="{{ route('juego.edit', $juego) }}" class="btn btn-primary">Editar </a> |
