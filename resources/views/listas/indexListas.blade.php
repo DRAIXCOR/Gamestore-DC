@@ -71,7 +71,7 @@
     </nav>    
 
     <div class="container">
-        <h1>Lista de deseos</h1>
+        <h1>Mi lista de deseos</h1>
 
         <table border="1">
             <thead>
@@ -96,6 +96,7 @@
                     </td>
                 </tr>
                 @endforeach
+                
             </tbody>
         </table>
     </div>

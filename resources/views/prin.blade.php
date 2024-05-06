@@ -28,6 +28,39 @@
         .bg-custom {
             background-color: #CCCCCC; /* Color gris */
         }
+
+
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
     </style>
 </head>
 <body class="bg-custom">
@@ -52,37 +85,40 @@
                     <li class="nav-item">
                         <a class="nav-link" href="juego/create">Juego</a>
                     </li>
+                 
+                    @if ($user)
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="lista/create">Lista de deseos</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista/create">Lista de deseos</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="login">Log In</a>
-                    </li>
+                        <div class="dropdown">
+                            <button class="nav-link">{{ $user->name }}</button>
+                            <div class="dropdown-content">
+                                
+                                <a class="nav-link" href="{{ route('profile.show') }}">Pefil</a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="register">Registrarse</a>
-                    </li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="nav-link" :href="route('logout')"
+                                            onclick="event.preventDefault();
+                                            this.closest('form').submit();"> Log Out </a>
+                                </form>
+                            </div>
+                        </div>
 
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a class="nav-link" :href="route('logout')"
-                                onclick="event.preventDefault();
-                                this.closest('form').submit();"> Log Out </a>
-                        </form>
-                    </li>
-
-                    <li class="nav-item">
-                            @if ($user)
-                                <a class="nav-link">{{ $user->name }}</a>
-                               
-                            @else
-                                <a class="nav-link" href="login">Invitado</a>
-                            @endif
-                    </l1>
-                
+                    @else
+                        <div class="dropdown">
+                            <button class="nav-link">Invitado</button>
+                                <div class="dropdown-content">
+                        
+                                    <a class="nav-link" href="login">Log In</a>
+                                
+                                    <a class="nav-link" href="register">Registrarse</a>
+                                    
+                                </div>
+                        </div>
+                    @endif              
                 
                 </ul>
 

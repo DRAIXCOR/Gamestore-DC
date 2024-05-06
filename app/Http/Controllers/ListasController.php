@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listas;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class ListasController extends Controller
@@ -21,7 +23,10 @@ class ListasController extends Controller
      */
     public function create()
     {
-        return view('listas.createListas');
+
+        $user = Auth::user();
+        //return view('usuarios', ['user' => $user]);    
+        return view('listas.createListas',  ['user' => $user]);
     }
 
     /**
@@ -52,6 +57,7 @@ class ListasController extends Controller
      */
     public function show(Listas $lista)
     {
+     
         return view('Listas.showListas', compact('lista'));
     }
 
