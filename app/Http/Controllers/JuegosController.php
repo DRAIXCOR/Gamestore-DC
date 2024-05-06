@@ -6,6 +6,7 @@ use App\Models\Juegos;
 use App\Models\Plataforma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class JuegosController extends Controller
 {
@@ -46,7 +47,34 @@ class JuegosController extends Controller
         ]);
         
         // Guardar la imagen en el almacenamiento local
-        $rutaImagen = $request->file('imagen')->store('public/images');
+        //$rutaImagen = $request->file('imagen')->store('public/images');
+
+
+        $imagenOriginal = $request->file('imagen');
+
+        // Generar un nombre de archivo único
+        $nombreArchivo = uniqid('imagen_') . '.' . $imagenOriginal->getClientOriginalExtension();
+
+        // Reescalar la imagen
+        $imagenReescalada = Image::make($imagenOriginal)->resize(200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        });
+
+        //Guardado extraño pero funcional en el almacenamiento local
+        $imagenReescalada->save(public_path('imagenes/' . $nombreArchivo));
+        $rutaImagen = 'imagenes/' . $nombreArchivo;
+
+
+        // Guardar la imagen reescalada en el almacenamiento de la aplicación
+        //$rutaImagen = $imagenOriginal->store('imagenes');
+
+        // Guardar la imagen reescalada en el directorio 'public/images' de 'storage'
+        //$rutaImagen = $imagenReescalada->store('public/images');
+        // Obtener la URL pública de la imagen
+        //$urlImagen = Storage::url($rutaImagen);
+
+        //$imagenReescalada->save('public/uploads/' . $nombreArchivo);
+
 
         $juego = new Juegos();
         $juego->nombre_juego = $request->nombre_juego;
@@ -56,7 +84,7 @@ class JuegosController extends Controller
         $juego->precio = $request->precio;
         $juego->desarrolladora = $request->desarrolladora;
         $juego->release_year = $request->release_year;
-        $juego->imagen = Storage::url($rutaImagen); // Obtener la URL pública de la imagen
+        $juego->imagen = $rutaImagen; // Obtener la URL pública de la imagen
         $juego->plataforma_id = $request->plataforma_id;
         $juego->save();
 
