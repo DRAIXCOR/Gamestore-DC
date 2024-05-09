@@ -70,6 +70,13 @@
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
 
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" readonly >
+        @error('Id del Usuario') 
+            <div class=”alert alert-danger”> {{$message}}</div>
+        @enderror
+
+
+
         <label for="nombre_juego">Nombre del Videojuego:</label>
         <input type="text" name="nombre_juego" value=" {{old('nombre_juego')}} ">
         @error('Nombre del Videojuego') 

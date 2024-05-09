@@ -67,13 +67,6 @@
         @csrf
         @method('PATCH')
 
-        <label for="name">Nombre del Usuario:</label>
-        <input type="text" name="name" value=" {{$lista->name}} ">
-        @error('Nombre del Usuario') 
-            <div class=”alert alert-danger”> {{$message}}</div>
-        @enderror
-        <br><br>
-
         <label for="nombre_juego">Nombre del Videojuego:</label>
         <input type="text" name="nombre_juego" value=" {{$lista->nombre_juego}} ">
         @error('Nombre del juego') 

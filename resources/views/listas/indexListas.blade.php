@@ -70,7 +70,8 @@
         </div>
     </nav>    
 
-    <div class="container">
+    <div class="container"> 
+
         <h1>Mi lista de deseos</h1>
 
         <table border="1">
@@ -84,7 +85,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($listas as $lista)
+                @foreach ($listas as $lista)   
                 <tr>
                     <td>{{ $lista->name }}</td>
                     <td>{{ $lista->nombre_juego }}</td>
@@ -95,9 +96,10 @@
                          <a href="{{ route('lista.show', $lista) }}" class="btn btn-primary">Detalles</a>
                     </td>
                 </tr>
-                @endforeach
+            @endforeach 
                 
             </tbody>
+         
         </table>
     </div>
 

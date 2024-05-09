@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('listas', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); 
+            $table->string('name');  
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('nombre_juego');
             $table->string('precio');
             $table->string('oferta');
             $table->string('disponible');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
