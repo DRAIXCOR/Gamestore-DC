@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\BienvenidoMailable;
 use App\Http\Controllers\JuegosController;
 use App\Http\Controllers\ListasController;
 use App\Http\Controllers\PlataformaController;
@@ -42,3 +43,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//ruta para probar la creación de correos
+Route::get('bienvenido', function(){
+    Mail::to('ejemplo@ejemplo.com')->send(new BienvenidoMailable);
+})->name('bienvenido');

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\BienvenidoMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -20,10 +22,13 @@ class LoginController extends Controller
 
         $user->save();
 
+        // Envía el correo de bienvenida
+        Mail::to($user->email)->send(new BienvenidoMailable);
+
         Auth::login($user);
         
         //return redirect()->back();
-
+        return Redirect::route('bienvenido');
         
     }
 
