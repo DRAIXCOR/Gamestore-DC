@@ -7,7 +7,10 @@ use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\LoginController;
 use App\Models\Plataforma;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\Auth\RegisterController;
+=======
+>>>>>>> b6c69c269a806615402c14a463030290375621fa
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +37,7 @@ Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
 
+<<<<<<< HEAD
 Route::post('/custom-login', [LoginController::class, 'customLogin'])->name('custom.login');
 
 
@@ -42,6 +46,8 @@ Route::post('/register', [LoginController::class, 'register']);
 
 
 
+=======
+>>>>>>> b6c69c269a806615402c14a463030290375621fa
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

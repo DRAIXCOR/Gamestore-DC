@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> b6c69c269a806615402c14a463030290375621fa
     public function register(Request $request)
     {
         $user = new User();
@@ -21,6 +25,7 @@ class LoginController extends Controller
 
         Auth::login($user);
         
+<<<<<<< HEAD
         // Redireccionar a la página principal u otra página después del registro
         return redirect('/principal');
     }
@@ -46,11 +51,56 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+=======
+        //return redirect()->back();
+
+        
+    }
+
+    public function login(Request $request)
+    {
+        
+        $credentials = [
+            "email" => $request->email,
+            "password" => $request->password
+
+        ];
+
+        $remenber = ($request->has('remenber') ? true:false);
+
+        if(Auth::attempt($credentials, $remenber)){
+
+            $request->session()->regenerate();
+
+
+            return view('/principal');
+        }
+        else{
+            return redirect('login'); 
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+
+        $user->save();
+
+        Auth:login($user);
+        
+        return view('/principal');
+    }
+
+
+    public function logout(Request $request)
+    {
+        
+>>>>>>> b6c69c269a806615402c14a463030290375621fa
        Auth::logout();
        $request->session()->invalidate();
        $request->session()->regenerateToken();
 
        return redirect(route('login'));
+<<<<<<< HEAD
     }
 
     public function customLogin(Request $request)
@@ -67,3 +117,9 @@ class LoginController extends Controller
 }
 
 }
+=======
+       return view('/principal');
+    }
+
+}
+>>>>>>> b6c69c269a806615402c14a463030290375621fa
