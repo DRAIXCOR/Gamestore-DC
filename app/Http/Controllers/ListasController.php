@@ -14,7 +14,10 @@ class ListasController extends Controller
      */
     public function index()
     {
-        $listas = Listas::all();
+        // Obtenemos el id del usuario logeado
+        $userId = Auth::id();      
+        // Se obtienen los datos que cumplen la condición where
+        $listas = Listas::where('user_id', $userId)->get();
         return view('listas.indexListas', compact('listas'));
     }
 
@@ -23,9 +26,8 @@ class ListasController extends Controller
      */
     public function create()
     {
-
-        $user = Auth::user();
-        //return view('usuarios', ['user' => $user]);    
+        //Solo usuarios logeado pueden usar create
+        $user = Auth::user(); 
         return view('listas.createListas',  ['user' => $user]);
     }
 
@@ -40,9 +42,10 @@ class ListasController extends Controller
             'precio' => 'required',
            
         ]);
-        
+  
         $lista = new Listas();
         $lista->name = $request->name;
+        $lista->user_id = $request->user_id;
         $lista->nombre_juego = $request->nombre_juego;
         $lista->precio = $request->precio;
         $lista->oferta = $request->oferta;
@@ -75,13 +78,11 @@ class ListasController extends Controller
     public function update(Request $request, Listas $lista)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
             'nombre_juego' => ['required', 'string', 'max:255'],
             'precio' => 'required',
           
         ]);
-        
-        $lista->name = $request->name;
+  
         $lista->nombre_juego = $request->nombre_juego;
         $lista->precio = $request->precio;
         $lista->oferta = $request->oferta;
@@ -99,4 +100,15 @@ class ListasController extends Controller
         $lista->delete();
         return redirect()->route('lista.index');
     }
+
+
+    public function comprar(Listas $lista)
+    {
+     
+        return view('Listas.showListas', compact('lista'));
+    }
+
+
+    
+    
 }

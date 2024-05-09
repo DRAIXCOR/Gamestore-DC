@@ -44,7 +44,7 @@
             color: #333;
         }
     </style>
-    <title>Lista de deseos</title>
+    <title>Comprar</title>
 </head>
 <body class="bg-custom">
 <body>
@@ -70,36 +70,76 @@
         </div>
     </nav>    
 
-    <div class="container">
-        <h1>Mi lista de deseos</h1>
+    <div class="container"> 
+
+        <h1>Comprar productos</h1>
+
+        @php
+            $Total = 0
+        @endphp
+        @php
+            $con = 0
+        @endphp
 
         <table border="1">
             <thead>
                 <tr>
-                <th>Usuario</th>
                 <th>Juego</th>
                 <th>Precio</th>
                 <th>Oferta</th>
-                <th>Disponible</th>
+                <th>Precio total</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($listas as $lista)
+
+            @foreach ($listas as $lista)
+                @if($lista->disponible === 'Si')
                 <tr>
-                    <td>{{ $lista->name }}</td>
                     <td>{{ $lista->nombre_juego }}</td>
                     <td>{{ $lista->precio }}</td>
-                    <td>{{ $lista->oferta }}</td>
-                    <td>{{ $lista->disponible }}</td>
-                    <td>
-                         <a href="{{ route('lista.show', $lista) }}" class="btn btn-primary">Detalles</a>
-                    </td>
+                    <td>{{ $lista->oferta }}</td>   
+                    
+                    @if($lista->oferta === '20%')
+                        <td>{{ $lista->precio * .8 }}</td>
+                        @php
+                            $Total = $Total + $lista->precio * .8
+                        @endphp
+                    @elseif($lista->oferta === '50%')
+                        <td>{{ $lista->precio * .5 }}</td>
+                        @php
+                            $Total = $Total + $lista->precio * .5
+                        @endphp
+                    @elseif($lista->oferta === '99%')
+                        <td>{{ $lista->oferta * .1}}</td>
+                        @php
+                            $Total = $Total + $lista->precio * .1
+                        @endphp
+                    @else 
+                        <td>{{ $lista->precio }}</td>
+                        @php
+                            $Total = $Total + $lista->precio
+                        @endphp
+                    @endif
+
+                    @php
+                        $con = $con + 1 
+                    @endphp
+
                 </tr>
-                @endforeach
+                @endif
+            @endforeach
             </tbody>
         </table>
+        @if($con > 0)
+            <br>
+            <h4>Total a pagar ${{$Total}}</h4>
+            <br>
+            <a href='/comprar'  class="btn btn-primary">Realizar compra</a>
+        @else 
+            <br>
+            <h4>No se puede realizar una compra sin productos</h4>
+        @endif
 
-        <a href='/comprar'  class="btn btn-primary">Comprar</a>
     </div>
 
     <!-- Footer -->

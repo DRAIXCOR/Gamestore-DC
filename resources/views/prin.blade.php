@@ -29,9 +29,6 @@
             background-color: #CCCCCC; /* Color gris */
         }
 
-
-
-
         .dropdown {
             position: relative;
             display: inline-block;
