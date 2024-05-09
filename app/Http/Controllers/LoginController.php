@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    
     public function register(Request $request)
     {
         $user = new User();
@@ -21,6 +20,33 @@ class LoginController extends Controller
         Auth::login($user);
         
         return redirect('register');
+        // Redireccionar a la página principal u otra página después del registro
+        return redirect('/principal');
+    }
+
+   
+
+    public function login(Request $request)
+    {
+        $credentials = [
+            "email" => $request->email,
+            "password" => $request->password
+        ];
+
+        $remember = ($request->has('remember') ? true : false);
+
+        if(Auth::attempt($credentials, $remember)){
+            $request->session()->regenerate();
+            return redirect('/principal');
+        } else {
+            return redirect('login')->with('error', 'Credenciales inválidas');
+        }
+    }
+
+    public function logout(Request $request)
+    
+        //return redirect()->back();
+
         
     }
 
@@ -66,6 +92,24 @@ class LoginController extends Controller
        $request->session()->regenerateToken();
 
        return redirect(route('login'));
+
+    }
+
+    public function customLogin(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        return redirect('/principal');
+    }
+
+    return redirect('login')->withErrors([
+        'email' => 'Las credenciales proporcionadas son incorrectas.',
+    ]);
+}
+
+}
+
        return view('/principal');
     }
 

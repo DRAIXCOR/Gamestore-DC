@@ -8,6 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ComprarController;
 use App\Models\Plataforma;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,11 @@ Route::resource('plataforma',PlataformaController::class);
 Route::resource('juego', JuegosController::class);
 
 Route::resource('comprar',ComprarController::class);
+
+Route::post('/custom-login', [LoginController::class, 'customLogin'])->name('custom.login');
+
+Route::post('/register', [LoginController::class, 'register']);
+
 
 Route::middleware([
     'auth:sanctum',

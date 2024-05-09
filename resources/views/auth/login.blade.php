@@ -55,7 +55,8 @@
         </nav>
    
         <h2>Iniciar sesión</h2>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('custom.login') }}">
+
             @csrf
     
             <div>
