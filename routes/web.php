@@ -5,6 +5,7 @@ use App\Http\Controllers\ListasController;
 use App\Http\Controllers\PlataformaController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ComprarController;
 use App\Models\Plataforma;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/principal/{Tipo?}', [PrincipalController::class, 'prin']); 
 
 Route::resource('lista', ListasController::class)->parameters([
@@ -33,9 +35,14 @@ Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
 
+Route::resource('comprar',ComprarController::class);
 
-Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified',])
-    ->group(function () {
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard'); })->name('dashboard');
+        return view('dashboard');
+    })->name('dashboard');
 });

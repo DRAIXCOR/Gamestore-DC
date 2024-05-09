@@ -100,4 +100,15 @@ class ListasController extends Controller
         $lista->delete();
         return redirect()->route('lista.index');
     }
+
+
+    public function comprar(Listas $lista)
+    {
+     
+        return view('Listas.showListas', compact('lista'));
+    }
+
+
+    
+    
 }
