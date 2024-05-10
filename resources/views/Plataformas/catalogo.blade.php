@@ -29,12 +29,25 @@
         .bg-custom {
             background-color: #CCCCCC; /* Color gris */
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
     </style>
-    
-    <title>Listado</title>
+    <title>Catalogo</title>
 </head>
 <body class="bg-custom">
-
+<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -50,41 +63,48 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="plataforma/create">Crear Nuevo</a>
-                    </li>      
+                         <a class="nav-link" href="{{ route('plataforma.index')}}">Regresar</a>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>    
 
-    <!-- Contenido principal -->
-    <div class="content">
-        <h1>Listado de Plataformas</h1>
-        <table class="table">
+    <div class="container">
+        <h1>Catalogo de {{ $plataforma->nombre_plataforma }}</h1>
+
+        <table border="1">
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Tipo</th>
+                    <th>Género</th>
+                    <th>Edad</th>
+                    <th>Precio</th>
+                    <th>Desarrolladora</th>
+                    <th>Año</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
+                    <th>Portada</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($plataformas as $plataforma)
+                @foreach ($juego as $juego)
                     <tr>
-                        <td>{{ $plataforma->nombre_plataforma }}</td>
-                        <td>{{ $plataforma->tipo_plataforma }}</td>
-                        <td>{{ $plataforma->created_at }}</td>
+                        <td>{{ $juego->nombre_juego }}</td>
+                        <td>{{ $juego->genero }}</td>
+                        <td>{{ $juego->edad }}</td>
+                        <td>{{ $juego->precio }}</td>
+                        <td>{{ $juego->desarrolladora }}</td>
+                        <td>{{ $juego->release_year }}</td>
+                        <td>{{ $juego->created_at }}</td>
                         <td>
-                            <a href="{{ route('plataforma.show', $plataforma) }}" class="btn btn-primary">Ver Plataformas</a>
-                            <a class="btn btn-primary" href="{{ route('plataforma.catalogo', $plataforma) }}">Ver catalogo de juegos</a>
+                            <img src="{{ asset($juego->imagen) }}" alt="Portada del juego">
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-
+<br><br><br>
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
         <p>&copy; GAMESTORE DC</p>
@@ -94,4 +114,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Juegos;
 use App\Models\Plataforma;
+use App\Mail\BienvenidoMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Mail;
 
 class JuegosController extends Controller
 {
@@ -70,8 +72,8 @@ class JuegosController extends Controller
         $juego->release_year = $request->release_year;
         $juego->imagen = $rutaImagen; // Obtener la URL pública de la imagen
         $juego->plataforma_id = $request->plataforma_id;
+        //Mail::to("email@ejemplo.com")->send(new BienvenidoMailable);
         $juego->save();
-
         return redirect()->route('juego.index');
     }
 

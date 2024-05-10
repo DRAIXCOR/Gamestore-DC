@@ -30,4 +30,3 @@ class AddImagenToJuegosTable extends Migration
         });
     }
 }
-
