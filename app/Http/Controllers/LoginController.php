@@ -1,9 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Mail\BienvenidoMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -15,9 +17,19 @@ class LoginController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        // Envía el correo de bienvenida
+        Mail::to($user->email)->send(new BienvenidoMailable);
+
         Auth::login($user);
+<<<<<<< HEAD
         // Redireccionar a la página principal u otra página después del registro
         return redirect('/principal');
+=======
+        
+        //return redirect()->back();
+        return Redirect::route('bienvenido');
+        
+>>>>>>> emails
     }
    
     public function login(Request $request)
