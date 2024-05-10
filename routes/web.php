@@ -34,6 +34,8 @@ Route::resource('lista', ListasController::class)->parameters([
     'lista' => 'lista'
 ]);
 
+Route::get('/lista/{lista}/realizar-compra', 'ListasController@realizarCompra')->name('lista.realizarCompra');
+
 Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);

@@ -72,7 +72,7 @@ class JuegosController extends Controller
         $juego->release_year = $request->release_year;
         $juego->imagen = $rutaImagen; // Obtener la URL pública de la imagen
         $juego->plataforma_id = $request->plataforma_id;
-        //Mail::to("email@ejemplo.com")->send(new BienvenidoMailable);
+
         $juego->save();
         return redirect()->route('juego.index');
     }

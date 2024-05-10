@@ -134,7 +134,7 @@
             <br>
             <h4>Total a pagar ${{$Total}}</h4>
             <br>
-            <a href='/comprar'  class="btn btn-primary">Realizar compra</a>
+            <a href="{{ route('lista.realizarCompra', ['lista' => $lista->id]) }}" class="btn btn-primary">Realizar compra</a>
         @else 
             <br>
             <h4>No se puede realizar una compra sin productos</h4>
