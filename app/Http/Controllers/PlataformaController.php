@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plataforma;
+use App\Models\Juegos;
 use Illuminate\Http\Request;
 
 class PlataformaController extends Controller
@@ -80,8 +81,6 @@ class PlataformaController extends Controller
         return redirect()->route('plataforma.show', $plataforma);
     }
     
-   
-
     /**
      * Remove the specified resource from storage.
      */
@@ -90,4 +89,18 @@ class PlataformaController extends Controller
         $plataforma->delete();
         return redirect()->route('plataforma.index');
     }
+
+    public function catalogo(Plataforma $plataforma)
+    {   
+        //Se recupera el id actual de la plataforma
+        $plataformaId = $plataforma->id;
+        // Se obtienen los datos que cumplen la condición where
+        $juego = Juegos::where('plataforma_id', $plataformaId)->get();
+        return view('Plataformas.catalogo', compact('juego', 'plataforma'));
+    }
 }
+
+
+
+
+

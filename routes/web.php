@@ -44,6 +44,8 @@ Route::post('/custom-login', [LoginController::class, 'customLogin'])->name('cus
 
 Route::post('/register', [LoginController::class, 'register']);
 
+Route::get('plataforma/{plataforma}/catalogo', [PlataformaController::class, 'catalogo'])
+    ->name('plataforma.catalogo');
 
 Route::middleware([
     'auth:sanctum',
