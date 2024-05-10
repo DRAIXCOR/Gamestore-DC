@@ -75,8 +75,6 @@
             <div class=”alert alert-danger”> {{$message}}</div>
         @enderror
 
-
-
         <label for="nombre_juego">Nombre del Videojuego:</label>
         <input type="text" name="nombre_juego" value=" {{old('nombre_juego')}} ">
         @error('Nombre del Videojuego') 
@@ -96,7 +94,7 @@
             <option value="No" {{ old('oferta') == 'No' ? 'selected' : '' }}>No</option>
             <option value="20%" {{ old('oferta') == '20%' ? 'selected' : '' }}>20%</option>
             <option value="50%" {{ old('oferta') == '50%' ? 'selected' : '' }}>50%</option>
-            <option value="99%" {{ old('oferta') == '99%' ? 'selected' : '' }}>99%</option>
+            <option value="90%" {{ old('oferta') == '90%' ? 'selected' : '' }}>90%</option>
         </select>
         @error('Oferta') 
             <div class=”alert alert-danger”> {{$message}}</div>

@@ -108,7 +108,4 @@ class ListasController extends Controller
         return view('Listas.showListas', compact('lista'));
     }
 
-
-    
-    
 }
