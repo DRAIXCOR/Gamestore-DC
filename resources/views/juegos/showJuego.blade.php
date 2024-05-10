@@ -6,25 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <title>Infor comentario</title>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .container-fluid {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        .content {
-            flex: 1 0 auto;
-        }
-        footer {
-            flex-shrink: 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+        
         .bg-custom {
             background-color: #CCCCCC; /* Color gris */
         }
@@ -71,6 +53,19 @@
             <button type="submit" class="btn btn-danger">Eliminar</button>
         </form>
     </li>
+
+
+            </li>
+        </ul>
+<!-- Footer -->
+<footer class="bg-dark text-light text-center py-3">
+        <p>&copy; GAMESTORE DC</p>
+    </footer>
+
+    <!-- Scripts de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>        
+</body>
+</html>
 
 
             </li>
