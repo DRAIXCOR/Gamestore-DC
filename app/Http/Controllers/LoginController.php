@@ -21,15 +21,12 @@ class LoginController extends Controller
         Mail::to($user->email)->send(new BienvenidoMailable);
 
         Auth::login($user);
-<<<<<<< HEAD
         // Redireccionar a la página principal u otra página después del registro
         return redirect('/principal');
-=======
         
         //return redirect()->back();
         return Redirect::route('bienvenido');
         
->>>>>>> emails
     }
    
     public function login(Request $request)
