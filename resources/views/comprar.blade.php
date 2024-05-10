@@ -109,8 +109,8 @@
                         @php
                             $Total = $Total + $lista->precio * .5
                         @endphp
-                    @elseif($lista->oferta === '99%')
-                        <td>{{ $lista->oferta * .1}}</td>
+                    @elseif($lista->oferta === '90%')
+                        <td>{{ $lista->precio * .1}}</td>
                         @php
                             $Total = $Total + $lista->precio * .1
                         @endphp

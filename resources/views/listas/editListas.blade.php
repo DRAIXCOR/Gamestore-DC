@@ -87,7 +87,7 @@
             <option value="No" {{ old('oferta') == 'No' ? 'selected' : '' }}>No</option>
             <option value="20%" {{ old('oferta') == '20%' ? 'selected' : '' }}>20%</option>
             <option value="50%" {{ old('oferta') == '50%' ? 'selected' : '' }}>50%</option>
-            <option value="99%" {{ old('oferta') == '99%' ? 'selected' : '' }}>99%</option>
+            <option value="90%" {{ old('oferta') == '99%' ? 'selected' : '' }}>90%</option>
         </select>
         @error('Oferta') 
             <div class=”alert alert-danger”> {{$message}}</div>
@@ -213,7 +213,7 @@
             <option value="No" {{ old('oferta') == 'No' ? 'selected' : '' }}>No</option>
             <option value="20%" {{ old('oferta') == '20%' ? 'selected' : '' }}>20%</option>
             <option value="50%" {{ old('oferta') == '50%' ? 'selected' : '' }}>50%</option>
-            <option value="99%" {{ old('oferta') == '99%' ? 'selected' : '' }}>99%</option>
+            <option value="90%" {{ old('oferta') == '99%' ? 'selected' : '' }}>90%</option>
         </select>
         @error('Oferta') 
             <div class=”alert alert-danger”> {{$message}}</div>
