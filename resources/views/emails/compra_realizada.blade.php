@@ -36,14 +36,48 @@
             text-decoration: none;
             border-radius: 4px;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>¡Compra Realizada!</h1>
-        <p>Tu compra se ha realizado con éxito. ¡Gracias por tu pedido!</p>
-        <p>Recibirás un correo electrónico de confirmación con los detalles de tu compra.</p>
-        <a href="#" class="button">Volver a la tienda</a>
+        <h1>¡Compra exitosa!</h1>
+        <p>{{ $nombres[0] }}, tu compra se ha realizado con éxito. ¡Gracias por tu pedido!</p>
+        <p>A continuación, encontrarás los detalles de tu compra:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del juego</th>
+                    <th>Precio</th>
+                    <th>Oferta</th>
+                </tr>
+            </thead>
+            <tbody>
+            @for ($i = 0; $i < count($juegos); $i++)
+                <tr>
+                    <td>{{ $juegos[$i] }}</td>
+                    <td>{{ $precios[$i] }}</td>
+                    <td>{{ $ofertas[$i] }}</td>
+                </tr>
+            @endfor
+            </tbody>
+        </table>
+        <br>
+        <p>El cobro de ha realizado por $ {{$Total}} MXN</p>
+        <br><br>
     </div>
 </body>
 </html>
+

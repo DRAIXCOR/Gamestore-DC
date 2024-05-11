@@ -118,9 +118,18 @@ class ListasController extends Controller
     {
         // Obtener al usuario autenticado
         $user = Auth::user();
+        $nombres = $request->input('nombres');
+        $juegos = $request->input('juegos');
+        $precios = $request->input('precios');
+        $ofertas = $request->input('ofertas');
+        $Total = $request->input('Total');
 
         // Envía el correo de bienvenida
-        Mail::to($user->email)->send(new CompraMailable($lista));
+        Mail::to($user->email)->send(new CompraMailable($nombres, $juegos, $precios, $ofertas, $Total));
+
+        // Eliminar los registros de la tabla 'listas' con el campo 'name' igual a $nombres[0]
+        Listas::where('name', $nombres[0])->delete();
+        
         return redirect()->route('lista.create');
     }
 }

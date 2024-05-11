@@ -14,12 +14,24 @@ class CompraMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $nombres;
+    public $juegos;
+    public $precios;
+    public $ofertas;
+    public $Total;
+
     /**
      * Create a new message instance.
+     *  @param array $juegos
      */
-    public function __construct()
+
+    public function __construct($nombres, $juegos, $precios, $ofertas, $Total)
     {
-        //
+        $this->nombres = $nombres;
+        $this->juegos = $juegos;
+        $this->precios = $precios;
+        $this->ofertas = $ofertas;
+        $this->Total = $Total;
     }
 
     /**
@@ -40,6 +52,7 @@ class CompraMailable extends Mailable
     {
         return new Content(
             view: 'emails.compra_realizada',
+            //data: ['listas' => $this->listas]
         );
     }
 

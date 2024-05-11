@@ -135,7 +135,14 @@
             <h4>Total a pagar ${{$Total}}</h4>
             <br>
             <form method="POST" action="{{ route('realizar.compra') }}">
-                @csrf <!-- Agregar el token CSRF para protección -->
+                @csrf
+                @foreach ($listas as $lista)
+                    <input type="hidden" name="nombres[]" value="{{ $lista->name }}">    
+                    <input type="hidden" name="juegos[]" value="{{ $lista->nombre_juego }}">
+                    <input type="hidden" name="precios[]" value="{{ $lista->precio }}">
+                    <input type="hidden" name="ofertas[]" value="{{ $lista->oferta }}">
+                @endforeach
+                <input type="hidden" name="Total" value="{{ $Total }}">
                 <button type="submit" class="btn btn-primary">Realizar compra</button>
             </form>
 
