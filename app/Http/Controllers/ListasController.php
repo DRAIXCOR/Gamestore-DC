@@ -109,13 +109,13 @@ class ListasController extends Controller
 
     public function comprar(Listas $lista)
     {
-     
+        Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
         return view('Listas.showListas', compact('lista'));
     }
 
-    public function realizarCompra(Request $request, Lista $lista)
+    public function realizarCompra()
     {
-        Mail::to($request->user())->send(new CompraRealizada());
+        Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
 
         return redirect()->route('principal');
     }

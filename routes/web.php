@@ -34,8 +34,6 @@ Route::resource('lista', ListasController::class)->parameters([
     'lista' => 'lista'
 ]);
 
-Route::get('/lista/{lista}/realizar-compra', 'ListasController@realizarCompra')->name('lista.realizarCompra');
-
 Route::resource('plataforma',PlataformaController::class);
 
 Route::resource('juego', JuegosController::class);
@@ -46,6 +44,7 @@ Route::post('/custom-login', [LoginController::class, 'customLogin'])->name('cus
 
 Route::post('/register', [LoginController::class, 'register']);
 
+Route::post('/realizar-compra', 'ListasController@realizarCompra')->name('realizar.compra');
 
 Route::middleware([
     'auth:sanctum',
