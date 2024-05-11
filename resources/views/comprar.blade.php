@@ -134,7 +134,12 @@
             <br>
             <h4>Total a pagar ${{$Total}}</h4>
             <br>
-            <a href='/comprar'  class="btn btn-primary">Realizar compra</a>
+            <form method="POST" action="{{ route('realizar.compra') }}">
+                @csrf
+                <button type="submit" class="btn btn-primary">Realizar compra</button>
+            </form>
+
+
         @else 
             <br>
             <h4>No se puede realizar una compra sin productos</h4>

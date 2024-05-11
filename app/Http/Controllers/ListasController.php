@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Listas;
 use App\Models\User;
+use App\Models\Juegos;
+use App\Mail\CompraRealizadaMailable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ListasController extends Controller
 {
@@ -28,7 +31,9 @@ class ListasController extends Controller
     {
         //Solo usuarios logeado pueden usar create
         $user = Auth::user(); 
-        return view('listas.createListas',  ['user' => $user]);
+        // Obtener todos los juegos
+        $juegos = Juegos::all();
+        return view('listas.createListas',  ['user' => $user, 'juegos' => $juegos]);
     }
 
     /**
@@ -104,8 +109,14 @@ class ListasController extends Controller
 
     public function comprar(Listas $lista)
     {
-     
+        Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
         return view('Listas.showListas', compact('lista'));
     }
 
+    public function realizarCompra()
+    {
+        Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
+
+        return redirect()->route('principal');
+    }
 }

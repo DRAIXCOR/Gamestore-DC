@@ -18,6 +18,7 @@ class ComprarController extends Controller
         $listas = Listas::where('user_id', $userId)->get();
         return view('comprar', ['listas' => $listas]);
     } 
+    
 }
 
 

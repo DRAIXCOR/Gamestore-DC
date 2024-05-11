@@ -46,6 +46,7 @@ Route::post('/register', [LoginController::class, 'register']);
 
 Route::get('plataforma/{plataforma}/catalogo', [PlataformaController::class, 'catalogo'])
     ->name('plataforma.catalogo');
+Route::post('/realizar-compra', 'ListasController@realizarCompra')->name('realizar.compra');
 
 Route::middleware([
     'auth:sanctum',
