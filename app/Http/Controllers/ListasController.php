@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CompraMailable;
+use App\Mail\BienvenidoMailable;
 use App\Models\Listas;
 use App\Models\User;
 use App\Models\Juegos;
-use App\Mail\CompraRealizadaMailable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -107,16 +108,19 @@ class ListasController extends Controller
     }
 
 
-    public function comprar(Listas $lista)
+    /*public function comprar(Listas $lista)
     {
         Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
         return view('Listas.showListas', compact('lista'));
-    }
+    }*/
 
-    public function realizarCompra()
+    public function realizarCompra(Request $request)
     {
-        Mail::to('ejemplo@ejemplo.com')->send(new CompraRealizada());
+        // Obtener al usuario autenticado
+        $user = Auth::user();
 
-        return redirect()->route('principal');
+        // Envía el correo de bienvenida
+        Mail::to($user->email)->send(new CompraMailable($lista));
+        return redirect()->route('lista.create');
     }
 }

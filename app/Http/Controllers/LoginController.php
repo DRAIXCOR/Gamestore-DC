@@ -18,7 +18,7 @@ class LoginController extends Controller
         $user->save();
 
         // Envía el correo de bienvenida
-        Mail::to($user->email)->send(new BienvenidoMailable);
+        Mail::to($user->email)->send(new BienvenidoMailable($user->name));
 
         Auth::login($user);
         // Redireccionar a la página principal u otra página después del registro

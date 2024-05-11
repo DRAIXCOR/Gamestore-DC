@@ -43,7 +43,7 @@
     
     <div class="container">
         <h1>Bienvenido a Gamestore DC</h1>
-        <p>Hola, ¡gracias por registrarte en nuestro nuestra tienda en línea!</p>
+        <p>Hola {{ $nombreUsuario }}, ¡gracias por registrarte en nuestro nuestra tienda en línea!</p>
         <p>¡Esperamos que disfrutes de tu experiencia con nosotros, comprando a los mejores precios!</p>
         <a href="http://127.0.0.1:8000/principal" class="button">Comenzar</a>
     </div>

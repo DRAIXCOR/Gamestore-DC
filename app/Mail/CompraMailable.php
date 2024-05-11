@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CompraRealizada extends Mailable
+class CompraMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -29,7 +29,7 @@ class CompraRealizada extends Mailable
     {
         return new Envelope(
             from: new Address('gamestoredc@gsdc.com', 'Administración'),
-            subject: 'Compra exitosa',
+            subject: 'Bienvenido a Gamestore DC',
         );
     }
 

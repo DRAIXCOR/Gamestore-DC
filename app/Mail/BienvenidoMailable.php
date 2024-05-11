@@ -14,12 +14,15 @@ class BienvenidoMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $nombreUsuario;
+
     /**
      * Create a new message instance.
+     * @param string $nombreUsuario
      */
-    public function __construct()
+    public function __construct($nombreUsuario)
     {
-        //
+        $this->nombreUsuario = $nombreUsuario;
     }
 
     /**

@@ -135,10 +135,9 @@
             <h4>Total a pagar ${{$Total}}</h4>
             <br>
             <form method="POST" action="{{ route('realizar.compra') }}">
-                @csrf
+                @csrf <!-- Agregar el token CSRF para protección -->
                 <button type="submit" class="btn btn-primary">Realizar compra</button>
             </form>
-
 
         @else 
             <br>
