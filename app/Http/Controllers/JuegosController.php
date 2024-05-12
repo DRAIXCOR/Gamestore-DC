@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -22,11 +21,6 @@ class JuegosController extends Controller
         $this->middleware('auth')->except(['index']);
     }
 
-=======
-
-class JuegosController extends Controller
-{
->>>>>>> 0ed27c6bc3057efc6b9e504e3bbba6bcccd0ab63
     /**
      * Display a listing of the resource.
      */
@@ -41,14 +35,9 @@ class JuegosController extends Controller
      */
     public function create()
     {
-<<<<<<< HEAD
         $user = Auth::user(); 
         $plataformas = Plataforma::all();
         return view('Juegos.createJuegos', ['user' => $user, 'plataformas' => $plataformas]);
-=======
-        $plataformas = Plataforma::all();
-        return view('Juegos.createJuegos', ['plataformas' => $plataformas]);
->>>>>>> 0ed27c6bc3057efc6b9e504e3bbba6bcccd0ab63
     }
 
     /**
@@ -60,11 +49,7 @@ class JuegosController extends Controller
             'nombre_juego' => ['required', 'string', 'max:255'],
             'genero' => 'required',
             'edad' => 'required',
-<<<<<<< HEAD
             'plataforma' => 'required',
-=======
-            'plataforma' => 'required|array|min:1',
->>>>>>> 0ed27c6bc3057efc6b9e504e3bbba6bcccd0ab63
             'precio' => 'required',
             'desarrolladora' => ['required', 'string', 'max:255'],
             'release_year' => 'required',
